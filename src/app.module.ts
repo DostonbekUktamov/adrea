@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/entities/user.entity';
 import { LicenseModule } from './license/license.module';
 import { License } from './license/entities/license.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { License } from './license/entities/license.entity';
       // autoLoadEntities : true
     }),
     UsersModule,
-    LicenseModule, 
+    LicenseModule,
+    AuthModule, 
   ],
   controllers: [AppController],
   providers: [AppService],
