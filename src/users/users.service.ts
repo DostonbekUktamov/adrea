@@ -11,19 +11,20 @@ export class UsersService {
     @InjectRepository(User)
     private usersRepository: Repository<User>,
   ) {}
+  create(user: CreateUserDto) {
+    return this.usersRepository.save(user);
+  }
 
   findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+    return this.usersRepository.find({
+      relations: ['licenses'],
+    });
   }
 
   findOne(id: number): Promise<User> {
     return this.usersRepository.findOneBy({ id });
   }
 
-  async create(user: User): Promise<User> {
-    console.log(user)
-    return this.usersRepository.save(user);
-  }
 
   async remove(id: string): Promise<void> {
     await this.usersRepository.delete(id);

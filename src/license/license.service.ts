@@ -22,15 +22,8 @@ export class LicenseService {
   }
 
   async create(license: CreateLicenseDto) {
-    const newLicense = {
-      ...license,
-      created_at : new Date,
-      updated_at : new Date
-    }
-  
-   return this.licenseRepository.save(newLicense);
+   return this.licenseRepository.save(license);
   }
-
   async remove(id: string): Promise<void> {
     await this.licenseRepository.delete(id);
   }

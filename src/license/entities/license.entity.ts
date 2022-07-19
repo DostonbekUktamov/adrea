@@ -24,6 +24,6 @@ export class License {
   updated_at: Date;
 
   @ManyToOne(type => User, user => user.licenses)
-  @JoinColumn({name: 'userId',referencedColumnName: 'id'})
-  userId: User;
+  @JoinColumn({name: 'userId'})
+  userId: number;
 }
